@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .import views
-
+from chatsiteapp import views1
 urlpatterns = [
     path('admin/', admin.site.urls),
     # landing page which is the sign in made using bootstraps example templates
@@ -57,4 +57,19 @@ urlpatterns = [
     path('chartD/',views.chartD, name='chartD'),
     # Take readings from the sensor
     path('measure',views.measurement,name='measure'),
+    path('Access_log/', views1.Access_LogList.as_view()),
+    path('Data_logA/', views1.Data_LogAList.as_view()),
+    path('Data_logB/', views1.Data_LogBList.as_view()),
+    path('Data_logC/', views1.Data_LogCList.as_view()),
+    path('Data_logD/', views1.Data_LogDList.as_view()),
+    path('feedbacklist/',views1.FeedBackList.as_view()),
+    path('User/', views1.UserList.as_view()),
+    path('DataA/<int:Sump>/<int:Tank>/<int:Reservoir>',views.dataA),
+    path('DataB/<int:Sump>/<int:Tank>/<int:Reservoir>',views.dataB),
+    path('DataC/<int:Sump>/<int:Tank>/<int:Reservoir>',views.dataC),
+    path('DataD/<int:Sump>/<int:Tank>/<int:Reservoir>', views.dataD),
+    path('FeedBack/',views.feedBack,name='FeedBack'),
+    path('AboutUs/',views.AboutUs,name='AboutUs'),
+    path('submitFeedBack/',views.submitFeedBack,name='submitFeedBack'),
+
 ]

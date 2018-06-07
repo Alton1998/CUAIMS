@@ -5,7 +5,9 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from .logic import measure
 from .fusioncharts import FusionCharts
-
+from chatsiteapp.models import Data_LogC,Data_LogD,Data_LogB,Data_LogA,Access_Log,FeedBack
+import time
+import smtplib
 #use the decorator @login_required only when you want to restrict a page to only logged in user
 # never use the '' as a link for the login url since it never works
 # you can however use '' as link for your landing page
@@ -17,9 +19,10 @@ def landing(request):
 @login_required(login_url='/landing/')
 def mainpage(request):
     per=300
+    perc=(per/415)*100
     per1=100
-    return render(request,'main.html',{"per":per,"per1":per1})
-
+    perc1 = (per1/ 415) * 100
+    return render(request,'main.html',{"per":per,"per1":per1,"perc":perc,"perc1":perc1})
 # Block B page
 @login_required(login_url='/landing/')
 def Bmain(request):
@@ -82,7 +85,14 @@ def login(request):
         user=auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
+            access=Access_Log.objects.create()
+            access.User = username
+            access.time = "" + time.strftime("%d/%m/%Y %H:%M:%S")
+            access.save()
             return HttpResponseRedirect('/main/')
+        else:
+            stats="User Not Available"
+            return render(request, 'landing.html', {"stats":stats})
 
 # function to render signupform
 def signupform(request):
@@ -97,7 +107,7 @@ def signup(request):
         if password==confirmpassword:
             user=User.objects.create_user(username=username,password=password)
             user.save()
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('/landing')
         else:
             stats="Passwords Do Not Match"
             return render(request, "signupform.html", {"stats":stats})
@@ -214,4 +224,63 @@ def chartD(request):
 @login_required(login_url='/landing/')
 def measurement(request):
     p=measure();
-    return HttpResponse(str(p));
+    return HttpResponse(str(p))
+def dataA(request,Sump,Tank,Reservoir):
+    data=Data_LogA()
+    data.Sump=Sump
+    data.Reservoir=Reservoir
+    data.Tank=Tank
+    data.time = "" + time.strftime("%d/%m/%Y %H:%M:%S")
+    data.save()
+    return HttpResponse("Works")
+
+def dataB(request,Sump,Tank,Reservoir):
+    data=Data_LogB()
+    data.Sump=Sump
+    data.Reservoir=Reservoir
+    data.Tank=Tank
+    data.time = "" + time.strftime("%d/%m/%Y %H:%M:%S")
+    data.save()
+    return HttpResponse("Works")
+
+def dataC(request,Sump,Tank,Reservoir):
+    data=Data_LogC()
+    data.Sump=Sump
+    data.Reservoir=Reservoir
+    data.Tank=Tank
+    data.save()
+    return HttpResponse("Works")
+
+def dataD(request,Sump,Tank,Reservoir):
+    data=Data_LogD()
+    data.Sump=Sump
+    data.Reservoir=Reservoir
+    data.Tank=Tank
+    data.time=""+ time.strftime("%d/%m/%Y %H:%M:%S")
+    data.save()
+    return HttpResponse("Works")
+
+@login_required(login_url='/landing/')
+def feedBack(request):
+    return render(request,'FeedBack.html',{})
+
+@login_required(login_url='/landing/')
+def submitFeedBack(request):
+    if request.method=="POST":
+        feedback=request.POST["feedback"]
+        f=FeedBack.objects.create()
+        f.User=request.user.username
+        f.FeedBack=feedback
+        content=feedback
+        mail = smtplib.SMTP('smtp.gmail.com', 587)
+        mail.ehlo()
+        mail.starttls()
+        mail.login("alton.dsouza@btech.christuniversity.in","armourofgod")
+        mail.sendmail("alton.dsouza@btech.christuniversity.in", "alton.dsouza@btech.christuniversity.in",content)
+        mail.close()
+        f.save()
+        return HttpResponseRedirect('/main/')
+
+@login_required(login_url='/landing/')
+def AboutUs(request):
+    return render(request,'AboutUs.html',{})

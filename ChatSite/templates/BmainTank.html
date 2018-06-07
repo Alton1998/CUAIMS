@@ -3,7 +3,7 @@
     <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel=stylesheet href="{% static 'styleTank.css' %}">
+          <link rel=stylesheet href="{% static 'style.css' %}">
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,17 +14,7 @@
         </script>
 
           <script>
-    function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-}
-
-            $(document).ready(function()
+                $(document).ready(function()
             {
 
                                          var counter=0;var a=0;
@@ -69,6 +59,56 @@ function closeNav() {
                                                     ctr=0;b=0;
                                                 }
                                             },15);
+                                            var ctor=0;var c=5;
+                                            var qintr=setInterval(function()
+                                            {
+                                                if(ctor<=200 && c<=200)
+                                                {
+                                                    c=c+1;
+                                                    ctor++;
+                                                    $(".box3").css({height:c});
+                                                    var w=0.5*150;
+
+                                                    if(ctr>w)
+                                                        clearInterval(qintr);
+
+                                                }
+                                                else
+                                                {
+                                                    ctor=0;c=0;
+                                                }
+                                            },15);
+
+
+                                            $("#1").ready(function(){
+                                                var div = $("#1");
+                                                div.animate({width: '190px', opacity: '1'}, "slow");
+                                            });
+                                            $("#2").ready(function(){
+                                                var div = $("#2");
+                                                div.animate({width: '200px', opacity: '1'}, "slow");
+                                            });
+                                            $("#3").ready(function(){
+                                                var div = $("#3");
+                                                div.animate({width: '210px', opacity: '1'}, "slow");
+                                            });
+                                            $("#4").ready(function(){
+                                                var div = $("#4");
+                                                div.animate({width: '220px', opacity: '1'}, "slow");
+                                            });
+                                             $("#A").click(function(){
+                                                window.location.href={% url 'main' %};
+                                            });
+                                              $("#B").click(function(){
+                                                window.location.href={% url 'Bmain' %};
+                                            });
+                                            $("#C").click(function(){
+                                                window.location.href={% url 'Cmain' %};
+                                            });
+                                             $("#D").click(function(){
+                                                window.location.href={% url 'Dmain' %};
+                                            });
+
             });
 
 
@@ -80,22 +120,13 @@ function closeNav() {
 
 
               <div id="main">
-              <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <div id="mySidenav" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"style="text-decoration: none">&times;</a>
-              <a href="{% url 'main' %}" style="text-decoration: none">Block A</a>
-              <a class="active1" href="{% url 'Bmain' %}" style="text-decoration: none">Block B</a>
-              <a href="{% url 'Cmain' %}" style="text-decoration: none">Block C</a>
-              <a href="{% url 'Dmain' %}" style="text-decoration: none">Block D</a>
-                <a href="{% url 'chart' %}" style="text-decoration: none">Water Available</a>
-              </div>
-              <span class="navbar-toggler-icon" onclick="openNav()"></span>
-      <a class="navbar-brand" href="#"><img src="{% static 'logotransparent.png' %}" style = "height:35px; width: auto; margin-left: 20px;"></a>
+              <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"style="height:80px">
+                  <a class="navbar-brand" href="{% url 'logout' %}"><img src="{% static 'logotransparent.png' %}" style = "height:35px; width: auto; margin-left: 20px;"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <div class="collapse navbar-dark bg-dark navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'Bmain' %}" style="font-size: 20px;">Sump <span class="sr-only"></span></a>
@@ -107,7 +138,13 @@ function closeNav() {
              <li class="nav-item">
             <a class="nav-link" href="{% url 'chartB' %}" style="font-size: 20px;">Graph</a>
           </li>
-
+             <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="font-size: 20px;">More</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="{% url 'AboutUs' %}">About us</a>
+              <a class="dropdown-item" href="{% url 'FeedBack' %}">FeedBack</a>
+            </div>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
@@ -116,26 +153,46 @@ function closeNav() {
 
 
         </nav></div>
-        <div class="container">
-            <div class="drops-layer-sump" id="2drops">
-            <div class ="drop" id="dro">
+        <div class="drops-layer-sump" id="2drops">
+            <div class ="drop" id="dro" style=" margin:20 0 0 85;">
 
                 <div class='box' id="bo">
-                        <img class="pics img-fluid" id="pi" src="{% static 'dropbox.png' %}">
+                        <img class="img-fluid pics" id="pi" src="{% static 'dropbox.png' %}">
                 </div>
                 <div class="perc" id="per">Tank<br>50%</div>
             </div>
 
-            <div class="sump-pump" id="sp">PUMP</div>
+            <div class="sump-pump" id="sp" style="margin:230 0 0 455;">PUMP</div>
 
-            <div class ="drop2" id="dro2">
+            <div class ="drop2" id="dro2" style="margin:20 0 0 670;">
 
                 <div class='box2' id="bo2">
                         <img class="img-fluid pics2" id="pi2" src="{% static 'dropbox.png' %}">
                 </div>
-                     <div class="perc2" id="per2">Reservoir<br>50%</div>
+                     <div class="perc2" id="per2" style="padding-left: 125px;">Reservoir<br>50%</div>
             </div>
-        </div></div>
+                <div style="background-color:#585e76;width:316;height:100%;margin: 0 0 0 1050;">
+                <div class="drop3" id="dro3" style="margin:0 0 0 100;">
+                <div class ="box3" id ="bo3" style="background-color: #03a9f4;position: absolute;width:105px;height:3px;bottom:0px;">
+                    <img class ="pics3" id="pi3" src="{% static 'smalldrop.png' %}" style="margin-top:0%;margin-right:0%; width:auto;height:150px;position: absolute;bottom: 0;">
+
+                </div>
+                    </div>
+               <div style="background-color:#bdbdbd;height:25px;width:315px;position:absolute;margin:270 0 0 0;"></div>
+                    <div id="1" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:270 0 0 0;">Floor 1</div>
+                    <div style="background-color:#bdbdbd;height:25px;width:315px;position:absolute;margin:305 0 0 0;"></div>
+                    <div id="2" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:305 0 0 0;">Floor 2</div>
+                    <div style="background-color:#bdbdbd;height:25px;width:315px;position:absolute;margin:340 0 0 0;"></div>
+                    <div id="3" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:340 0 0 0;">Floor 3</div>
+                    <div style="background-color:#bdbdbd;height:25px;width:315px;position:absolute;margin:375 0 0 0;"></div>
+                    <div id="4" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:375 0 0 0;">Floor 4</div>
+                     <button id='A' type="button" class="btn btn-outline-primary btn-lg "style="margin:410 0 0 0;"onclick="A()">Block A</button>
+                    <button id='B' type="button" class="btn btn-outline-primary btn-lg active"style="margin:410 0 0 5;"onclick="B()">Block B</button>
+                    <button id='C' type="button" class="btn btn-outline-primary btn-lg"style="margin:410 0 0 3;"onclick="C()">Block C</button>
+                    <button id='D' type="button" class="btn btn-outline-primary btn-lg"style="margin:10 0 0 107" onclick="D()">Block D</button>
+
+            </div>
+            </div>
 
     </body>
 
