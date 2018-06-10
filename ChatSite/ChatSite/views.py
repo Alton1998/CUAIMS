@@ -8,6 +8,7 @@ from .fusioncharts import FusionCharts
 from chatsiteapp.models import Data_LogC,Data_LogD,Data_LogB,Data_LogA,Access_Log,FeedBack
 import time
 import smtplib
+import math
 #use the decorator @login_required only when you want to restrict a page to only logged in user
 # never use the '' as a link for the login url since it never works
 # you can however use '' as link for your landing page
@@ -19,58 +20,164 @@ def landing(request):
 @login_required(login_url='/landing/')
 def mainpage(request):
     per=300
-    perc=(per/415)*100
     per1=100
-    perc1 = (per1/ 415) * 100
-    return render(request,'main.html',{"per":per,"per1":per1,"perc":perc,"perc1":perc1})
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1/ 415) * 100)
+    activeA = "active"
+    activeB = ""
+    activeC = ""
+    activeD = ""
+    name="Reservoir"
+    name1="Sump"
+    urlGraph="http://127.0.0.1:8000/main/chartA"
+    active1 = "active"
+    active2 = ""
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD,"name":name,"name1":name1,"urlGraph":urlGraph,"active1":active1,"active2":active2})
 # Block B page
 @login_required(login_url='/landing/')
 def Bmain(request):
     per=90
     per1=300
-    return render(request,'Bmain.html',{"per":per,"per1":per1})
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = ""
+    activeB = "active"
+    activeC = ""
+    activeD = ""
+    name = "Reservoir"
+    name1 = "Sump"
+    urlGraph = "http://127.0.0.1:8000/main/chartB"
+    active1 = "active"
+    active2 = ""
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 
 # Block C page
 @login_required(login_url='/landing/')
 def Cmain(request):
     per=90
     per1=300
-    return render(request,'Cmain.html',{"per":per,"per1":per1})
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = ""
+    activeB = ""
+    activeC = "active"
+    activeD = ""
+    name = "Reservoir"
+    name1 = "Sump"
+    urlGraph = "http://127.0.0.1:8000/main/chartC"
+    active1 = "active"
+    active2 = ""
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 
 # Block D page
 @login_required(login_url='/landing/')
 def Dmain(request):
     per=90
     per1=300
-    return render(request,'Dmain.html',{"per":per,"per1":per1})
-
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = ""
+    activeB = ""
+    activeC = ""
+    activeD = "active"
+    name = "Reservoir"
+    name1 = "Sump"
+    urlGraph = "http://127.0.0.1:8000/main/chartD"
+    active1 = "active"
+    active2 = ""
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 # Block A tank page
 @login_required(login_url='/landing/')
 def mainpageTank(request):
     per=100
     per1=300
-    return render(request,'mainTank.html',{"per":per,"per1":per1})
-
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = "active"
+    activeB = ""
+    activeC = ""
+    activeD = ""
+    name = "Sump"
+    name1 = "Tank"
+    urlGraph = "http://127.0.0.1:8000/main/chartA"
+    active1 = ""
+    active2 = "active"
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 # Block B tank page
 @login_required(login_url='/landing/')
 def BmainTank(request):
     per=100
     per1=300
-    return render(request,'BmainTank.html',{"per":per,"per1":per1})
-
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = ""
+    activeB = "active"
+    activeC = ""
+    activeD = ""
+    name = "Sump"
+    name1 = "Tank"
+    urlGraph = "http://127.0.0.1:8000/main/chartB"
+    active1 = ""
+    active2 = "active"
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 # Block C tank page
 @login_required(login_url='/landing/')
 def CmainTank(request):
     per=100
     per1=300
-    return render(request,'CmainTank.html',{"per":per,"per1":per1})
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA = ""
+    activeB = ""
+    activeC = "active"
+    activeD = ""
+    name = "Sump"
+    name1 = "Tank"
+    urlGraph = "http://127.0.0.1:8000/main/chartC"
+    active1 = ""
+    active2 = "active"
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 
 # Block D tank page
 @login_required(login_url='/landing/')
 def DmainTank(request):
     per=100
     per1=300
-    return render(request,'DmainTank.html',{"per":per,"per1":per1})
+    perc = math.floor((per / 415) * 100)
+    perc1 = math.floor((per1 / 415) * 100)
+    activeA=""
+    activeB=""
+    activeC=""
+    activeD="active"
+    name = "Sump"
+    name1 = "Tank"
+    urlGraph = "http://127.0.0.1:8000/main/chartD"
+    active1 = ""
+    active2 = "active"
+    return render(request, 'main.html',
+                  {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
+                   "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
+                   "active1": active1, "active2": active2})
 
 #form action function for logout
 def logout(request):
@@ -155,7 +262,12 @@ def chartA(request):
                               }""")
 
     # returning complete JavaScript and HTML code, which is used to generate chart in the browsers.
-    return render(request, 'GraphA.html', {'output': column2d.render()})
+    activeA="active"
+    activeB=""
+    activeC=""
+    activeD=""
+    activeTotal=""
+    return render(request, 'fusioncharts-html-template.html', {'output': column2d.render(),"activeA":activeA,"activeB":activeB,"activeC":activeC,"activeD":activeD,"activeTotal":activeTotal})
 @login_required(login_url='/landing/')
 def chartB(request):
     # Create an object for the column2d chart using the FusionCharts class constructor
@@ -176,7 +288,15 @@ def chartB(request):
                               }""")
 
     # returning complete JavaScript and HTML code, which is used to generate chart in the browsers.
-    return render(request, 'GraphB.html', {'output': column2d.render()})
+    activeA = ""
+    activeB = "active"
+    activeC = ""
+    activeD = ""
+    activeTotal = ""
+    return render(request, 'fusioncharts-html-template.html',
+                  {'output': column2d.render(), "activeA": activeA, "activeB": activeB, "activeC": activeC,
+                   "activeD": activeD, "activeTotal": activeTotal})
+
 
 def chartC(request):
     # Create an object for the column2d chart using the FusionCharts class constructor
@@ -197,8 +317,14 @@ def chartC(request):
                               }""")
 
     # returning complete JavaScript and HTML code, which is used to generate chart in the browsers.
-    return render(request, 'GraphC.html', {'output': column2d.render()})
-
+    activeA = ""
+    activeB = ""
+    activeC = "active"
+    activeD = ""
+    activeTotal = ""
+    return render(request, 'fusioncharts-html-template.html',
+                  {'output': column2d.render(), "activeA": activeA, "activeB": activeB, "activeC": activeC,
+                   "activeD": activeD, "activeTotal": activeTotal})
 def chartD(request):
     # Create an object for the column2d chart using the FusionCharts class constructor
     column2d = FusionCharts("column2d", "ex1", "600", "400", "chart-1", "json",
@@ -218,7 +344,14 @@ def chartD(request):
                               }""")
 
     # returning complete JavaScript and HTML code, which is used to generate chart in the browsers.
-    return render(request, 'GraphD.html', {'output': column2d.render()})
+    activeA = ""
+    activeB = ""
+    activeC = ""
+    activeD = "active"
+    activeTotal = ""
+    return render(request, 'fusioncharts-html-template.html',
+                  {'output': column2d.render(), "activeA": activeA, "activeB": activeB, "activeC": activeC,
+                   "activeD": activeD, "activeTotal": activeTotal})
 
 # measurement function from the sensor
 @login_required(login_url='/landing/')

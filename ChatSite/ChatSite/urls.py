@@ -46,15 +46,15 @@ urlpatterns = [
     # form action for logout
     path('logout/',views.logout,name='logout'),
     # This link displays  a chart for water available on campus
-    path('chart/',views.chart,name='chart'),
+    path('main/chart/',views.chart,name='chart'),
     # Block A chart
-    path('chartA/',views.chartA,name='chartA'),
+    path('main/chartA/',views.chartA,name='chartA'),
     # Block B chart
-    path('chartB/',views.chartB, name='chartB'),
+    path('main/chartB/',views.chartB, name='chartB'),
     # Block C chart
-    path('chartC/',views.chartC, name='chartC'),
+    path('main/chartC/',views.chartC, name='chartC'),
     # Block D chart
-    path('chartD/',views.chartD, name='chartD'),
+    path('main/chartD/',views.chartD, name='chartD'),
     # Take readings from the sensor
     path('measure',views.measurement,name='measure'),
     path('Access_log/', views1.Access_LogList.as_view()),

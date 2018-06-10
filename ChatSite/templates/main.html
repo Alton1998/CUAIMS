@@ -128,20 +128,21 @@
 
       <div class="collapse navbar-collapse navbar-expand-md navbar-dark bg-dark" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="{% url 'main' %}" style="font-size: 20px;">Sump <span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'mainTank' %}" style="font-size: 20px;">Tank</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'chartA' %}" style="font-size: 20px;">Graph</a>
+            <a class="nav-link" href="{{ urlGraph }}" style="font-size: 20px;">Graph</a>
           </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="font-size: 20px;">More</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item" href="{% url 'AboutUs' %}">About us</a>
               <a class="dropdown-item" href="{% url 'FeedBack' %}">FeedBack</a>
+                 <a class="dropdown-item" href="{% url 'chart' %}">Total Water Available</a>
             </div>
           </li>
         </ul>
@@ -158,7 +159,7 @@
                 <div class='box' id="bo">
                         <img class="img-fluid pics" id="pi" src="{% static 'dropbox.png' %}">
                 </div>
-                <div class="perc" id="per">Sump<br>50%</div>
+                <div class="perc" id="per">{{ name }}<br>{{ perc }}%</div>
             </div>
 
             <div class="sump-pump" id="sp" style="margin:230 0 0 455;">PUMP</div>
@@ -168,7 +169,7 @@
                 <div class='box2' id="bo2">
                         <img class="img-fluid pics2" id="pi2" src="{% static 'dropbox.png' %}">
                 </div>
-                     <div class="perc2" id="per2">Tank<br>50%</div>
+                     <div class="perc2" id="per2">{{ name1 }}<br>{{ perc1 }}%</div>
             </div>
                 <div style="background-color:#585e76;width:316;height:100%;margin: 0 0 0 1050;">
                 <div class="drop3" id="dro3" style="margin:0 0 0 100;">
@@ -186,10 +187,10 @@
                     <div id="3" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:340 0 0 0;">Floor 3</div>
                     <div style="background-color:#bdbdbd;height:25px;width:315px;position:absolute;margin:375 0 0 0;"></div>
                     <div id="4" style="background:#03a9f4;height:25px;width:0px;position:absolute;margin:375 0 0 0;">Floor 4</div>
-                    <button id='A' type="button" class="btn btn-outline-primary btn-lg active"style="margin:410 0 0 0;"onclick="A()">Block A</button>
-                   <button id='B' type="button" class="btn btn-outline-primary btn-lg"style="margin:410 0 0 5;"onclick="B()">Block B</button>
-                   <button id='C' type="button" class="btn btn-outline-primary btn-lg"style="margin:410 0 0 3;"onclick="C()">Block C</button>
-                   <button id='D' type="button" class="btn btn-outline-primary btn-lg"style="margin:10 0 0 107" onclick="D()">Block D</button>
+                    <button id='A' type="button" class="btn btn-outline-primary btn-lg {{ activeA }}"style="margin:410 0 0 0;"onclick="A()">Block A</button>
+                   <button id='B' type="button" class="btn btn-outline-primary btn-lg {{ activeB }}"style="margin:410 0 0 5;"onclick="B()">Block B</button>
+                   <button id='C' type="button" class="btn btn-outline-primary btn-lg {{ activeC }}"style="margin:410 0 0 3;"onclick="C()">Block C</button>
+                   <button id='D' type="button" class="btn btn-outline-primary btn-lg {{ activeD }}"style="margin:10 0 0 107" onclick="D()">Block D</button>
             </div>
             </div>
     </body>

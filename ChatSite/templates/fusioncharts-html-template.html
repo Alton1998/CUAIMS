@@ -14,7 +14,12 @@
         <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="{% static 'fusioncharts.js' %}"></script>
    <script type="text/javascript" src="{% static 'fusioncharts.theme.ocean.js' %}"></script>
-
+<script>
+    function n()
+    {
+        window.history.back();
+    }
+</script>
 
 
   </head>
@@ -41,6 +46,7 @@
     <div id="chart-1" style="margin-left:20%;margin-top:10%"></div>
     <!-- dumping JavaScript code here -->
     {{ output|safe }}
+       <button type="button" class="btn btn-primary btn-lg" onclick="n()">Back</button>
   </div>
    </div>
    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
@@ -49,19 +55,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
+          <li class="nav-item {{ activeA }}">
             <a class="nav-link" href="{% url 'main' %}">Block A<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ activeB }}">
             <a class="nav-link" href="{% url 'Bmain' %}">Block B</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ activeC }}">
             <a class="nav-link" href="{% url 'Cmain' %}">Block C</a>
           </li>
-            <li class="nav-item">
+            <li class="nav-item {{ activeD }}">
             <a class="nav-link" href="{% url 'Dmain' %}">Block D</a>
           </li>
-            <li class="nav-item active">
+            <li class="nav-item {{ activeTotal }}">
             <a class="nav-link" href="{% url 'chart' %}">Total Water</a>
           </li>
         </ul>
