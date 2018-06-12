@@ -32,9 +32,11 @@ def mainpage(request):
     urlGraph="http://127.0.0.1:8000/main/chartA"
     active1 = "active"
     active2 = ""
+    sumpurl = "http://127.0.0.1:8000/main/"
+    tankurl =  "http://127.0.0.1:8000/mainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
-                   "activeC": activeC, "activeD": activeD,"name":name,"name1":name1,"urlGraph":urlGraph,"active1":active1,"active2":active2})
+                   "activeC": activeC, "activeD": activeD,"name":name,"name1":name1,"urlGraph":urlGraph,"active1":active1,"active2":active2,"sumpurl":sumpurl,"tankurl":tankurl})
 # Block B page
 @login_required(login_url='/landing/')
 def Bmain(request):
@@ -51,10 +53,12 @@ def Bmain(request):
     urlGraph = "http://127.0.0.1:8000/main/chartB"
     active1 = "active"
     active2 = ""
+    sumpurl = "http://127.0.0.1:8000/Bmain/"
+    tankurl = "http://127.0.0.1:8000/BmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 
 # Block C page
 @login_required(login_url='/landing/')
@@ -72,10 +76,12 @@ def Cmain(request):
     urlGraph = "http://127.0.0.1:8000/main/chartC"
     active1 = "active"
     active2 = ""
+    sumpurl = "http://127.0.0.1:8000/Cmain/"
+    tankurl = "http://127.0.0.1:8000/CmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 
 # Block D page
 @login_required(login_url='/landing/')
@@ -93,10 +99,12 @@ def Dmain(request):
     urlGraph = "http://127.0.0.1:8000/main/chartD"
     active1 = "active"
     active2 = ""
+    sumpurl = "http://127.0.0.1:8000/Cmain/"
+    tankurl = "http://127.0.0.1:8000/CmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 # Block A tank page
 @login_required(login_url='/landing/')
 def mainpageTank(request):
@@ -113,10 +121,12 @@ def mainpageTank(request):
     urlGraph = "http://127.0.0.1:8000/main/chartA"
     active1 = ""
     active2 = "active"
+    sumpurl = "http://127.0.0.1:8000/main/"
+    tankurl = "http://127.0.0.1:8000/mainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 # Block B tank page
 @login_required(login_url='/landing/')
 def BmainTank(request):
@@ -133,10 +143,12 @@ def BmainTank(request):
     urlGraph = "http://127.0.0.1:8000/main/chartB"
     active1 = ""
     active2 = "active"
+    sumpurl = "http://127.0.0.1:8000/Bmain/"
+    tankurl = "http://127.0.0.1:8000/BmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 # Block C tank page
 @login_required(login_url='/landing/')
 def CmainTank(request):
@@ -153,10 +165,12 @@ def CmainTank(request):
     urlGraph = "http://127.0.0.1:8000/main/chartC"
     active1 = ""
     active2 = "active"
+    sumpurl = "http://127.0.0.1:8000/Cmain/"
+    tankurl = "http://127.0.0.1:8000/CmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 
 # Block D tank page
 @login_required(login_url='/landing/')
@@ -174,10 +188,12 @@ def DmainTank(request):
     urlGraph = "http://127.0.0.1:8000/main/chartD"
     active1 = ""
     active2 = "active"
+    sumpurl = "http://127.0.0.1:8000/Dmain/"
+    tankurl = "http://127.0.0.1:8000/DmainTank/"
     return render(request, 'main.html',
                   {"per": per, "per1": per1, "perc": perc, "perc1": perc1, "activeA": activeA, "activeB": activeB,
                    "activeC": activeC, "activeD": activeD, "name": name, "name1": name1, "urlGraph": urlGraph,
-                   "active1": active1, "active2": active2})
+                   "active1": active1, "active2": active2, "sumpurl": sumpurl, "tankurl": tankurl})
 
 #form action function for logout
 def logout(request):

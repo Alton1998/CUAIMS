@@ -128,11 +128,11 @@
 
       <div class="collapse navbar-collapse navbar-expand-md navbar-dark bg-dark" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'main' %}" style="font-size: 20px;">Sump <span class="sr-only"></span></a>
+          <li class="nav-item {{ active1 }}">
+            <a class="nav-link" href="{{ sumpurl }}" style="font-size: 20px;">Sump <span class="sr-only"></span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'mainTank' %}" style="font-size: 20px;">Tank</a>
+          <li class="nav-item {{ active2 }}">
+            <a class="nav-link" href="{{ tankurl }}" style="font-size: 20px;">Tank</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="{{ urlGraph }}" style="font-size: 20px;">Graph</a>
